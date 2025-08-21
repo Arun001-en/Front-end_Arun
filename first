@@ -1,0 +1,42 @@
+--Type of css--
+1.Internal css
+2.External css
+
+
+
+
+--Selector in css--
+1.Class Selector
+2.Id Selector
+
+
+--To provide a space or to reduce space in web page:
+1.Margin
+2.Padding
+            magin-top
+            margin-botton 
+            margin-left
+            margin-right
+
+            padding-top
+            padding-botton
+            padding-left
+            padding-right
+
+
+
+Top
+Botton
+Left
+Right
+
+
+
+
+
+
+
+
+
+
+
