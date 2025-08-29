@@ -1,0 +1,29 @@
+li, h2 {
+  font-size:40px;
+  font-style: normal;
+  font-weight: normal;
+  color: rgb(3, 238, 255);
+
+}
+.lead{
+    font-size: 70px;
+}
+#footer-text{
+    color: rgb(132, 0, 255);
+}
+#C{
+    color: rgb(51, 255, 0);
+}
+#About{
+    text-align: center;
+    font-size: xx-large;
+    font-size: 60px;
+
+}
+.TechNova{
+    font-size: 70px;
+
+}
+#Movie{
+    color: rgb(51, 255, 0);
+}
