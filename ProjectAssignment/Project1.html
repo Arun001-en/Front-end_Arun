@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Number Pattern Generator</title>
+    <style>
+        .row {
+            padding: 4px 0;
+            font-family: monospace;
+            font-size: 1.1em;
+        }
+    </style>
+</head>
+<body>
+    <h2>Number Pattern Generator</h2>
+    <select id="patternType">
+        <option value="triangle">Triangle</option>
+        <option value="pyramid">Pyramid</option>
+        <option value="diamond">Diamond</option>
+    </select>
+    <input type="number" id="rowCount" min="1" max="20" value="5" />
+    <button onclick="renderPattern()">Generate</button>
+    <div id="patternArea"></div>
+
+    <script>
+        function generatePattern(rows, type) {
+            let html = "";
+            if (type === "triangle") {
+                for (let i = 1; i <= rows; i++) {
+                    let row = "";
+                    for (let j = 1; j <= i; j++) {
+                        row += j + " ";
+                    }
+                    html += `<div class="row" data-row="${i}">${row}</div>`;
+                }
+            } else if (type === "pyramid") {
+                for (let i = 1; i <= rows; i++) {
+                    let row = "";
+                    row += "&nbsp;".repeat(rows - i);
+                    for (let j = 1; j <= i; j++) {
+                        row += j + " ";
+                    }
+                    html += `<div class="row" data-row="${i}">${row}</div>`;
+                }
+            } else if (type === "diamond") {
+                // Upper pyramid
+                for (let i = 1; i <= rows; i++) {
+                    let row = "";
+                    row += "&nbsp;".repeat(rows - i);
+                    for (let j = 1; j <= i; j++) {
+                        row += j + " ";
+                    }
+                    html += `<div class="row" data-row="${i}">${row}</div>`;
+                }
+                // Lower inverted pyramid
+                for (let i = rows-1; i >= 1; i--) {
+                    let row = "";
+                    row += "&nbsp;".repeat(rows - i);
+                    for (let j = 1; j <= i; j++) {
+                        row += j + " ";
+                    }
+                    html += `<div class="row" data-row="${rows+i}">${row}</div>`;
+                }
+            }
+            return html;
+        }
+
+        function applyRowColors() {
+            const rows = document.querySelectorAll("#patternArea .row");
+            rows.forEach((row, idx) => {
+                if ((idx + 1) % 2 === 0) {
+                    row.style.background =
+                        "linear-gradient(to right, #e0e0ff, #a0a0ff)";
+                } else {
+                    row.style.background =
+                        "linear-gradient(to right, #fff0e0, #ffa080)";
+                }
+            });
+        }
+
+        function renderPattern() {
+            const rows = parseInt(document.getElementById("rowCount").value);
+            const type = document.getElementById("patternType").value;
+            document.getElementById("patternArea").innerHTML =
+                generatePattern(rows, type);
+            applyRowColors();
+        }
+
+        // Initial render
+        renderPattern();
+    </script>
+</body>
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <title>Tic-Tac-Toe ES6 Modular Game</title>
+  <style>
+    body { display: flex; flex-direction: column; align-items: center; font-family: Arial, sans-serif; }
+    h2 { margin-top: 20px; }
+    #status { margin: 12px 0; font-weight: bold; }
+    .board { display: grid; grid-template-columns: repeat(3, 60px); grid-gap: 6px; margin-bottom: 12px; }
+    .cell {
+      width: 60px; height: 60px;
+      font-size: 2em; text-align: center;
+      background: #f1f1f1; cursor: pointer;
+      border-radius: 8px; border: 1px solid #bdbdbd;
+      transition: background 0.2s;
+      user-select: none;
+    }
+    .cell:hover { background: #e1eaff; }
+    #restartBtn { padding: 8px 18px; font-size: 1em; border-radius: 6px; border: none; background: #a3d477; cursor: pointer; }
+    #restartBtn:hover { background: #8ec16a; }
+  </style>
+</head>
+<body>
+  <h2>Tic-Tac-Toe</h2>
+  <div id="status"></div>
+  <div id="board" class="board"></div>
+  <button id="restartBtn">Restart</button>
+
+  <script type="module">
+    
+    class TicTacToe {
+      constructor() {
+        this.board = Array(9).fill('');
+        this.currentPlayer = 'X';
+        this.isGameActive = true;
+        this.winner = null;
+      }
+
+      getWinningCombos() {
+        return [
+          [0,1,2],[3,4,5],[6,7,8], // rows
+          [0,3,6],[1,4,7],[2,5,8], // cols
+          [0,4,8],[2,4,6]          // diagonals
+        ];
+      }
+
+      makeMove(idx) {
+        if (!this.isGameActive || this.board[idx] || this.winner) return false;
+        this.board[idx] = this.currentPlayer;
+        if (this.checkWinner(this.currentPlayer)) {
+          this.isGameActive = false;
+          this.winner = this.currentPlayer;
+        } else if (this.board.every(cell => cell)) {
+          this.isGameActive = false;
+          this.winner = 'Draw';
+        } else {
+          this.currentPlayer = this.currentPlayer === 'X' ? 'O' : 'X';
+        }
+        return true;
+      }
+
+      checkWinner(player) {
+        return this.getWinningCombos().some(combo =>
+          combo.every(idx => this.board[idx] === player)
+        );
+      }
+
+      reset() {
+        this.board.fill('');
+        this.currentPlayer = 'X';
+        this.isGameActive = true;
+        this.winner = null;
+      }
+    }
+
+    // UI Controller Module
+    const GameUI = (() => {
+      const boardDiv = document.getElementById('board');
+      const statusDiv = document.getElementById('status');
+      const restartBtn = document.getElementById('restartBtn');
+
+      let game = new TicTacToe();
+
+      // Render board UI
+      const renderBoard = () => {
+        boardDiv.innerHTML = '';
+        game.board.forEach((cell, idx) => {
+          const cellDiv = document.createElement('div');
+          cellDiv.className = 'cell';
+          cellDiv.textContent = cell;
+          cellDiv.dataset.idx = idx;
+          cellDiv.addEventListener('click', handleCellClick);
+          boardDiv.appendChild(cellDiv);
+        });
+        renderStatus();
+      };
+
+      // Render status UI
+      const renderStatus = () => {
+        if (game.winner === 'Draw') {
+          statusDiv.textContent = `Draw! No winner.`;
+        } else if (game.winner) {
+          statusDiv.textContent = `Player ${game.winner} wins! 🎉`;
+        } else {
+          statusDiv.textContent = `Player ${game.currentPlayer}'s turn`;
+        }
+      };
+
+      // Handle cell click event
+      const handleCellClick = e => {
+        const idx = +e.target.dataset.idx;
+        if (game.makeMove(idx)) {
+          renderBoard();
+        }
+      };
+
+      // Handle restart
+      restartBtn.addEventListener('click', () => {
+        game.reset();
+        renderBoard();
+      });
+
+      // Initial render
+      renderBoard();
+    })();
+  </script>
+</body>
+</html>
