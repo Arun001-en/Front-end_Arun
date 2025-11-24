@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>FAQ Toggle</title>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<style>
+.faq{
+    max-width:500px;
+    margin:20px auto;
+    font-family:Arial;
+}
+.question{
+    background:#3498db;
+    color:white;
+    padding:10px;
+    margin-top:10px;
+    cursor:pointer;
+    border-radius:6px;
+}
+.answer{
+    display:none;
+    padding:10px;
+    background:#ecf0f1;
+    border-radius:6px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="faq">
+    <div class="question">What is jQuery?</div>
+    <div class="answer">jQuery is a JavaScript library that simplifies DOM manipulation.</div>
+
+    <div class="question">What is slideToggle?</div>
+    <div class="answer">slideToggle shows or hides an element with sliding animation.</div>
+
+    <div class="question">Is jQuery still useful?</div>
+    <div class="answer">Yes, especially for quick UI effects and legacy projects.</div>
+</div>
+
+<script>
+$(".question").click(function(){
+    $(this).next(".answer").slideToggle();
+});
+</script>
+
+</body>
+</html>

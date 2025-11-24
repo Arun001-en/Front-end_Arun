@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body{
+    font-family:Arial;
+    margin:0;
+    padding:20px;
+}
+.container{
+    display:flex;
+    gap:20px;
+}
+.blog{
+    flex:1;
+    background:#f3f3f3;
+    padding:15px;
+    border-radius:8px;
+}
+.blog h3{
+    margin:0 0 10px;
+}
+@media(max-width:800px){
+    .container{
+        flex-direction:column;
+    }
+}
+</style>
+</head>
+
+<body>
+<h1>My Blog</h1>
+
+<div class="container">
+    <div class="blog">
+        <h3>Blog 1</h3>
+        <p>Lorem ipsum dolor sit amet consectetur.</p>
+    </div>
+    <div class="blog">
+        <h3>Blog 2</h3>
+        <p>Lorem ipsum dolor sit amet consectetur.</p>
+    </div>
+    <div class="blog">
+        <h3>Blog 3</h3>
+        <p>Lorem ipsum dolor sit amet consectetur.</p>
+    </div>
+</div>
+
+</body>
+</html>

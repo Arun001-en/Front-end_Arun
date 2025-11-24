@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>To-Do List</title>
+
+<style>
+body{
+    font-family:Arial;
+    padding:20px;
+}
+#todo-container{
+    max-width:400px;
+}
+li{
+    display:flex;
+    justify-content:space-between;
+    background:#f2f2f2;
+    padding:8px;
+    margin-top:5px;
+    border-radius:6px;
+}
+button{
+    background:red;
+    color:white;
+    border:none;
+    padding:5px 8px;
+    border-radius:4px;
+}
+input{
+    width:70%;
+    padding:8px;
+    margin-right:5px;
+}
+</style>
+</head>
+
+<body>
+
+<h2>To-Do List</h2>
+
+<div id="todo-container">
+    <input type="text" id="task" placeholder="Enter task">
+    <button id="addBtn">Add</button>
+    <ul id="list"></ul>
+</div>
+
+<script>
+document.getElementById("addBtn").onclick = function(){
+    let taskText = document.getElementById("task").value;
+
+    if(taskText === "") return;
+
+    let li = document.createElement("li");
+    li.textContent = taskText;
+
+    let del = document.createElement("button");
+    del.textContent = "Delete";
+
+    del.onclick = function(){
+        li.remove();
+    }
+
+    li.appendChild(del);
+    document.getElementById("list").appendChild(li);
+
+    document.getElementById("task").value = "";
+}
+</script>
+
+</body>
+</html>

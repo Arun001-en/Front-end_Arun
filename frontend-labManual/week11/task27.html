@@ -1,0 +1,21 @@
+function App() {
+  const name = "Ayush";
+  const age = 22;
+
+  const greet = () => {
+    return `Welcome, ${name}!`;
+  };
+
+  const getMessage = () => "This is a dynamic message using JSX.";
+
+  return (
+    <div>
+      <h1>{greet()}</h1>
+      <p>Your age: {age}</p>
+      <p>{getMessage()}</p>
+      <p>Random Number: {Math.floor(Math.random() * 100)}</p>
+    </div>
+  );
+}
+
+export default App;

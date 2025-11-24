@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Advanced To-Do List</title>
+
+<style>
+    body{
+        font-family: Arial, sans-serif;
+        background:#eef2ff;
+        padding:20px;
+    }
+    #todoBox{
+        width:420px;
+        background:white;
+        padding:20px;
+        border-radius:10px;
+        box-shadow:0 0 10px rgba(0,0,0,0.2);
+    }
+    #taskList li{
+        padding:7px;
+        background:#e5e7eb;
+        border-radius:6px;
+        margin:7px 0;
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
+    }
+    .btns button{
+        margin-left:5px;
+    }
+</style>
+
+</head>
+<body>
+
+<h2>Task 22: Feature-Rich To-Do App</h2>
+
+<div id="todoBox">
+    <input type="text" id="taskInput" placeholder="Enter task">
+    <button onclick="addTask()">Add</button>
+
+    <ul id="taskList"></ul>
+</div>
+
+<script>
+function addTask(){
+    let input = document.getElementById("taskInput");
+    let text = input.value.trim();
+    if(text === "") return;
+
+    let li = document.createElement("li");
+
+    let checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
+
+    let span = document.createElement("span");
+    span.textContent = text;
+
+    let btnDiv = document.createElement("div");
+    btnDiv.className = "btns";
+
+    let up = document.createElement("button");
+    up.textContent = "↑";
+    up.onclick = () => moveUp(li);
+
+    let down = document.createElement("button");
+    down.textContent = "↓";
+    down.onclick = () => moveDown(li);
+
+    let del = document.createElement("button");
+    del.textContent = "Delete";
+    del.onclick = () => li.remove();
+
+    btnDiv.append(up, down, del);
+
+    li.append(checkbox, span, btnDiv);
+    document.getElementById("taskList").appendChild(li);
+
+    input.value = "";
+}
+
+function moveUp(item){
+    let prev = item.previousElementSibling;
+    if(prev) item.parentNode.insertBefore(item, prev);
+}
+
+function moveDown(item){
+    let next = item.nextElementSibling;
+    if(next) item.parentNode.insertBefore(next, item);
+}
+</script>
+
+</body>
+</html>

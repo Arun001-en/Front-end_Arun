@@ -1,0 +1,64 @@
+import { useState } from "react";
+
+function App() {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const [submitted, setSubmitted] = useState(false);
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    setSubmitted(true);
+  }
+
+  return (
+    <div style={{ width: "350px", margin: "auto", marginTop: "20px" }}>
+      <h2>Contact Form</h2>
+
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          placeholder="Enter name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          style={{ width: "100%", padding: "10px", marginBottom: "10px" }}
+        />
+
+        <input
+          type="email"
+          placeholder="Enter email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          style={{ width: "100%", padding: "10px", marginBottom: "10px" }}
+        />
+
+        <textarea
+          placeholder="Message"
+          value={message}
+          onChange={(e) => setMessage(e.target.value)}
+          style={{ width: "100%", padding: "10px", height: "80px" }}
+        ></textarea>
+
+        <button type="submit" style={{
+          marginTop: "10px",
+          padding: "10px",
+          width: "100%",
+          cursor: "pointer"
+        }}>
+          Submit
+        </button>
+      </form>
+
+      {submitted && (
+        <div style={{ marginTop: "20px", background: "#f3f4f6", padding: "15px" }}>
+          <h3>Submitted Data:</h3>
+          <p><strong>Name:</strong> {name}</p>
+          <p><strong>Email:</strong> {email}</p>
+          <p><strong>Message:</strong> {message}</p>
+        </div>
+      )}
+    </div>
+  );
+}
+
+export default App;

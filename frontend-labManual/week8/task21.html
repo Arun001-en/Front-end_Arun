@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Login Fade</title>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<style>
+#loginBox{
+    width:300px;
+    padding:20px;
+    background:#eee;
+    margin:40px auto;
+    display:none;
+    border-radius:8px;
+    font-family:Arial;
+}
+input{
+    width:100%;
+    padding:8px;
+    margin-top:10px;
+}
+button{
+    padding:8px 12px;
+    margin-top:10px;
+}
+</style>
+</head>
+
+<body>
+
+<button id="show">Show Login</button>
+<button id="hide">Hide Login</button>
+
+<div id="loginBox">
+    <h3>Login</h3>
+    <input type="text" placeholder="Username">
+    <input type="password" placeholder="Password">
+    <button>Login</button>
+</div>
+
+<script>
+$("#show").click(function(){
+    $("#loginBox").fadeIn();
+});
+
+$("#hide").click(function(){
+    $("#loginBox").fadeOut();
+});
+</script>
+
+</body>
+</html>

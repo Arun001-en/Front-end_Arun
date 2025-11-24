@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>About Us</title>
+
+    <style>
+        /* Element Selector */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f4ff; /* HEX */
+            margin: 20px;
+        }
+
+        /* Class Selector */
+        .section-title {
+            color: rgb(34, 90, 180); /* RGB */
+            font-size: 28px;
+            border-bottom: 2px solid rgba(34, 90, 180, 0.5); /* RGBA */
+        }
+
+        /* ID Selector */
+        #main-about {
+            background: hsl(210, 70%, 95%); /* HSL */
+            padding: 15px;
+            border-radius: 8px;
+        }
+
+        /* Attribute selector */
+        a[target="_blank"] {
+            color: #ff6600;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        /* Pseudo-class */
+        a:hover {
+            color: rgb(0, 120, 255);
+        }
+
+        /* Pseudo-element */
+        p::first-letter {
+            font-size: 30px;
+            font-weight: bold;
+            color: #ff3366;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1 class="section-title">About Us</h1>
+
+    <div id="main-about">
+        <p>
+            We are a growing company focused on innovative technology solutions.
+            Our mission is to deliver high-quality services to users worldwide.
+        </p>
+
+        <p>
+            Learn more about our work by visiting our 
+            <a href="https://example.com" target="_blank">official site</a>.
+        </p>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Async Simulation</title>
+</head>
+
+<body>
+
+<h2>Simulated Data Fetch</h2>
+<button id="fetchBtn">Fetch Data</button>
+<p id="result"></p>
+
+<script>
+function getData(){
+    return new Promise((resolve)=>{
+        setTimeout(()=>{
+            resolve("Server Response: User Data Loaded Successfully!");
+        }, 2000);
+    });
+}
+
+document.getElementById("fetchBtn").addEventListener("click", async function(){
+    document.getElementById("result").innerText = "Loading...";
+    
+    let data = await getData();
+    
+    document.getElementById("result").innerText = data;
+});
+</script>
+
+</body>
+</html>

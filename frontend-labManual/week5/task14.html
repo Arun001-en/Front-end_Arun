@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Array Methods</title>
+</head>
+
+<body>
+
+<script>
+let numbers = [5, 10, 15, 20, 25];
+
+let doubled = numbers.map(n => n * 2);
+
+let above10 = numbers.filter(n => n > 10);
+
+let sum = numbers.reduce((a, b) => a + b);
+
+document.write("Numbers: " + numbers + "<br>");
+document.write("Doubled (map): " + doubled + "<br>");
+document.write("Above 10 (filter): " + above10 + "<br>");
+document.write("Sum (reduce): " + sum + "<br>");
+
+document.write("<br>forEach output:<br>");
+numbers.forEach(n => document.write(n + "<br>"));
+</script>
+
+</body>
+</html>

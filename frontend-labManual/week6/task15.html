@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Functions, Closures & IIFE</title>
+</head>
+
+<body>
+
+<script>
+// Simple Function
+function add(a, b){
+    return a + b;
+}
+console.log("Add:", add(5, 10));
+
+// Closure Counter
+function counter(){
+    let count = 0;
+    return function(){
+        count++;
+        console.log("Counter:", count);
+    }
+}
+let c = counter();
+c();
+c();
+c();
+
+// IIFE
+(function(){
+    console.log("This is an IIFE running immediately");
+})();
+
+// Closure with Private Variable
+function bankBalance(){
+    let balance = 1000;
+    return {
+        deposit: function(amount){
+            balance += amount;
+            console.log("Balance after deposit:", balance);
+        },
+        withdraw: function(amount){
+            balance -= amount;
+            console.log("Balance after withdrawal:", balance);
+        }
+    }
+}
+
+let myAcc = bankBalance();
+myAcc.deposit(200);
+myAcc.withdraw(100);
+
+// Function Returning Another Function
+function greet(msg){
+    return function(name){
+        console.log(msg + " " + name);
+    }
+}
+
+let hi = greet("Hello");
+hi("Ayush");
+
+</script>
+
+</body>
+</html>

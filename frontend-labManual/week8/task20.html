@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Dynamic CSS</title>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<style>
+.box{
+    width:150px;
+    height:150px;
+    background:#ccc;
+    margin:20px;
+    border-radius:10px;
+}
+button{
+    padding:10px 15px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="box"></div>
+<button id="change">Change Style</button>
+
+<script>
+$("#change").click(function(){
+    $(".box").css({
+        background: "tomato",
+        width: "250px",
+        height: "250px",
+        borderRadius: "20px"
+    });
+});
+</script>
+
+</body>
+</html>
